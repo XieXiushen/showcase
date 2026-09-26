@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>私有化交付 · 地图与 AI 基础设施</title>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#111820; --line:#1e2a36; --fg:#e6edf3;
+    --muted:#8b9bab; --accent:#4cc9f0; --accent2:#7ae582;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .tag{display:inline-block;font-size:13px;letter-spacing:.08em;color:var(--accent);
+       border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin-bottom:20px}
+  h1{font-size:40px;line-height:1.25;margin:0 0 16px;letter-spacing:-.01em}
+  h1 span{color:var(--accent)}
+  .lede{color:var(--muted);font-size:18px;max-width:720px;margin:0}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 24px;letter-spacing:.01em}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{margin:0 0 10px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .card .k{color:var(--accent2);font-size:13px;letter-spacing:.06em;display:block;margin-bottom:10px}
+  ul.clean{margin:0;padding-left:20px;color:var(--muted)}
+  ul.clean li{margin:8px 0}
+  .row{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:15px}
+  .row b{color:var(--fg);font-weight:600}
+  footer{padding:40px 0 72px;color:var(--muted);font-size:14px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .ph{color:#5d6b7a;border-bottom:1px dashed #33414f}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="tag">私有化交付 · 本地部署 · 数据不出域</div>
+  <h1>地图与 AI 基础设施，<span>可验证的私有化交付</span></h1>
+  <p class="lede">
+    主线一：地图变更检测——从多期数据中发现变化、判定影响、闭环处置。<br>
+    主线二：私有化运维——把平台装进客户自己的机房与网络，数据不出域。<br>
+    底座：云端架构与 AI infra（算力调度、模型服务、可观测）。
+  </p>
+</header>
+
+<section class="wrap">
+  <h2>能力底座</h2>
+  <div class="grid">
+    <div class="card"><span class="k">MAP</span><h3>自动驾驶地图制作与使用</h3>
+      <p>多源数据接入、地图要素生产与质检、变更检测与影响面评估，全链路可追溯。</p></div>
+    <div class="card"><span class="k">CLOUD</span><h3>云端架构</h3>
+      <p>高可用与弹性伸缩、成本可控的部署形态、跨环境一致交付。</p></div>
+    <div class="card"><span class="k">AI INFRA</span><h3>AI 基础设施</h3>
+      <p>模型服务与推理调度、数据与训练流水线、可观测与稳定性治理。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>在做的事</h2>
+  <div class="grid">
+    <div class="card"><span class="k">产品 01</span><h3>地图变更检测</h3>
+      <p>面向地图数据质量与更新的巡检能力：自动发现差异、量化影响、输出可复核结论与处置建议。</p></div>
+    <div class="card"><span class="k">产品 02</span><h3>私有化运维</h3>
+      <p>面向内网环境的部署与运维交付：安装即用、离线可用、权限与数据边界清晰。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>交付形态</h2>
+  <ul class="clean">
+    <li><b>标准件</b>：数据质量巡检报告（固定口径、可对比、可复现）</li>
+    <li><b>私有化</b>：本地/内网部署，数据不出域，按环境交付</li>
+    <li><b>开源</b>：核心组件开源，署名与许可清晰 <span class="ph">[GitHub 仓库链接待填]</span></li>
+  </ul>
+</section>
+
+<section class="wrap">
+  <h2>关于</h2>
+  <div class="row">
+    <div><b>所在地</b> 上海 · 杭州</div>
+    <div><b>合作</b> <span class="ph">[邮箱 / 微信待填]</span></div>
+    <div><b>语言</b> 中文 / English</div>
+  </div>
+</section>
+
+<footer class="wrap">
+  本页为展示站首版骨架（本地托管，可迁移到任意静态托管）。内容占位处已用虚线标注，替换为实际仓库与联系方式即可对外发布。
+</footer>
+</body>
+</html>
