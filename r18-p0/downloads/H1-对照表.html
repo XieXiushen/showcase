@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>H1 对照表｜12GB 显存本地部署对照表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @page { size: A4 landscape; margin: 10mm 10mm 8mm 10mm; }
+  :root {
+    --ink: #16181d;
+    --ink-2: #41464f;
+    --ink-3: #6b7280;
+    --line: #c9ced6;
+    --line-2: #e3e6ea;
+    --head: #1d2430;
+    --accent: #0b5fff;
+    --band: #f4f6f9;
+    --hit: #0a6b3d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #eceef2;
+    color: var(--ink);
+    font-family: "Microsoft YaHei", "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Hiragino Sans GB", SimSun, Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 297mm;
+    min-height: 210mm;
+    margin: 12px auto;
+    padding: 8mm 8mm 6mm 8mm;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,.16);
+  }
+  .top { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 2px solid var(--head); padding-bottom: 4px; }
+  h1 { font-size: 17px; margin: 0; letter-spacing: .3px; }
+  h1 .sub { font-size: 11px; font-weight: 400; color: var(--ink-3); margin-left: 8px; }
+  .brand { font-size: 10px; color: var(--ink-3); text-align: right; line-height: 1.3; }
+  .topcond {
+    margin: 4px 0 5px;
+    padding: 4px 9px;
+    border-left: 4px solid var(--accent);
+    background: var(--band);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--head);
+  }
+  .logic { font-size: 10.2px; color: var(--ink-3); margin: 0 0 4px; line-height: 1.4; }
+  .logic b { color: var(--ink-2); }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  caption { caption-side: top; text-align: left; font-size: 10px; color: var(--ink-3); padding: 0 0 2px; }
+  th, td { border: 1px solid var(--line); padding: 3px 4px; vertical-align: top; word-break: break-word; }
+  thead th {
+    background: var(--head);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.3;
+  }
+  thead th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hdrnote td {
+    background: #fdf6e3;
+    border-color: #e6d9a8;
+    color: #6b4b00;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+  }
+  tbody tr.g td { background: #fff; }
+  tbody tr:nth-child(even) td { background: #fafbfc; }
+  tbody tr.g4 td { background: #eef5ff; }
+  tbody tr.g6 td { background: #fdf1f0; }
+  .gid { font-weight: 700; white-space: nowrap; }
+  .gid em { display: block; font-style: normal; font-weight: 400; color: var(--ink-3); font-size: 10px; }
+  .big { font-weight: 700; color: var(--accent); }
+  .bad { font-weight: 700; color: #b3261e; }
+  .hit { color: var(--hit); font-weight: 700; }
+  .miss { color: #8a6d00; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9.8px; background: #f0f2f5; padding: 0 2px; border-radius: 2px; }
+  td.cond { color: var(--ink-3); font-size: 9.5px; white-space: nowrap; }
+  .foot { margin-top: 5px; font-size: 9.8px; color: var(--ink-2); line-height: 1.38; }
+  .foot ol { margin: 0; padding-left: 15px; }
+  .foot li { margin-bottom: 0.5px; }
+  .foot b { color: var(--ink); }
+  .concl { margin-top: 4px; padding: 4px 8px; background: var(--band); border-left: 4px solid var(--head); font-size: 10.5px; line-height: 1.4; }
+  .concl b { color: var(--head); }
+  .disc { margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--line); font-size: 10px; color: var(--ink-2); }
+  .src { margin-top: 3px; font-size: 9.5px; color: var(--ink-3); }
+  .toolbar { width: 297mm; margin: 0 auto; text-align: right; }
+  .toolbar button {
+    font: inherit; font-size: 11px; padding: 5px 12px; cursor: pointer;
+    border: 1px solid var(--line); background: #fff; color: var(--ink-2); border-radius: 3px;
+  }
+  @media print {
+    body { background: #fff; font-size: 9.6px; }
+    .page { width: auto; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+    .toolbar { display: none; }
+    h1 { font-size: 15px; }
+    .topcond { font-size: 10.5px; padding: 3px 7px; margin: 3px 0 4px; }
+    .logic { font-size: 9.3px; }
+    caption { font-size: 9px; }
+    thead th { font-size: 9.2px; }
+    tr.hdrnote td { font-size: 10px; }
+    th, td { padding: 2px 3px; }
+    .gid em { font-size: 9px; }
+    code { font-size: 9px; }
+    td.cond { font-size: 9px; }
+    .foot { font-size: 9.2px; margin-top: 4px; }
+    .concl { font-size: 9.8px; }
+    .disc { font-size: 9.2px; }
+    .src { font-size: 8.8px; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button type="button" onclick="window.print()">打印 / 存为 PDF（A4 横向）</button></div>
+<div class="page">
+
+  <div class="top">
+    <h1>12GB 显存本地部署对照表<span class="sub">H1｜一页表</span></h1>
+    <div class="brand">单机实测 6 组对照<br>先给条件，再给数字</div>
+  </div>
+
+  <div class="topcond">单机实测 RTX 5070 12GB / i5-14600K / 32GB / Windows 10，结论不迁移到其他硬件</div>
+
+  <p class="logic"><b>全表通用条件：</b>同一张测试图 <code>test-image.png</code>、同一 prompt（<code>temperature=0.0 / top_p=0.8 / max_tokens=500</code>）、<code>-c 8192</code> 六组一致；<b>1069 prompt tokens</b>、<b>230 输出 tokens</b>；<code>prompt tok/s</code> 取服务端 <code>timings.prompt_per_second</code>（<code>cache_prompt=false</code> 全量重算），<code>decode tok/s</code> 取 <code>timings.predicted_per_second</code>，首 token 取客户端 SSE 首个分片；<b>显存为整卡 used，含桌面约 1331 MiB</b>；每组跑完即卸模型再起下一组。</p>
+
+  <table>
+    <caption>H1《12GB 显存本地部署对照表》｜数值出处：<code>org\articles\R14-coder-bench.md</code>（第 20–27、44–49、62–79 行），未新增任何数字</caption>
+    <colgroup>
+      <col style="width:9%"><col style="width:21%"><col style="width:8%"><col style="width:7.5%"><col style="width:7.5%">
+      <col style="width:16%"><col style="width:10%"><col style="width:11%"><col style="width:10%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>组号</th>
+        <th>参数差异</th>
+        <th>mmproj<br>位置</th>
+        <th class="num">prompt<br>tok/s</th>
+        <th class="num">decode<br>tok/s</th>
+        <th>首token<br>冷 / 热·全量 / 缓存命中</th>
+        <th class="num">显存 MiB<br>（待机/峰值）</th>
+        <th>精度是否命中</th>
+        <th>条件<br>脚注</th>
+      </tr>
+      <tr class="hdrnote">
+        <td colspan="9">单机实测 RTX 5070 12GB / i5-14600K / 32GB / Windows 10，结论不迁移到其他硬件</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="g g1">
+        <td class="gid">G1<em>基线</em></td>
+        <td><code>-ngl 99 --no-mmproj-offload</code>（FA 默认关、KV f16、<code>-t 10</code>）</td>
+        <td>CPU</td>
+        <td class="num">80.07</td>
+        <td class="num">117.33</td>
+        <td>12.97 s / 13.37 s / 0.030 s</td>
+        <td class="num">6290 / 6297</td>
+        <td class="hit">4/4 字段 + 结论</td>
+        <td class="cond">[1][2][3][4][5]</td>
+      </tr>
+      <tr class="g g2">
+        <td class="gid">G2<em>FA 开关</em></td>
+        <td>G1 + <code>-fa on</code></td>
+        <td>CPU</td>
+        <td class="num">78.40</td>
+        <td class="num">116.71</td>
+        <td><span class="miss">未测</span> / 13.66 s / 0.032 s</td>
+        <td class="num">6273 / 6297</td>
+        <td class="hit">4/4 字段 + 结论</td>
+        <td class="cond">[1][2][3][4][5]</td>
+      </tr>
+      <tr class="g g3">
+        <td class="gid">G3<em>KV q8_0</em></td>
+        <td>G2 + <code>-ctk q8_0 -ctv q8_0</code></td>
+        <td>CPU</td>
+        <td class="num">83.92</td>
+        <td class="num">113.57</td>
+        <td><span class="miss">未测</span> / 12.76 s / 0.031 s</td>
+        <td class="num">6063 / 6088</td>
+        <td class="hit">4/4 字段 + 结论</td>
+        <td class="cond">[1][2][3][4][5]</td>
+      </tr>
+      <tr class="g g4">
+        <td class="gid">G4<em>mmproj 上卡</em></td>
+        <td><code>-ngl 99 -fa on</code>，去掉 <code>--no-mmproj-offload</code></td>
+        <td><b>GPU</b></td>
+        <td class="num big">2322.94</td>
+        <td class="num">116.71</td>
+        <td>0.586 s / 0.481 s / 0.031 s</td>
+        <td class="num">8268 / 8369</td>
+        <td class="hit">4/4 字段 + 结论</td>
+        <td class="cond">[1][2][3][4][5]</td>
+      </tr>
+      <tr class="g g5">
+        <td class="gid">G5<em>线程数 -t 12</em></td>
+        <td>G2 + <code>-t 12</code>（默认实测 10）</td>
+        <td>CPU</td>
+        <td class="num">87.55</td>
+        <td class="num">117.93</td>
+        <td><span class="miss">未测</span> / 12.27 s / 0.054 s</td>
+        <td class="num">6273 / 6296</td>
+        <td class="hit">4/4 字段 + 结论</td>
+        <td class="cond">[1][2][3][4][5]</td>
+      </tr>
+      <tr class="g g6">
+        <td class="gid">G6<em>CPU 退化</em></td>
+        <td>同模型改从 <code>...\Programs\Ollama\lib\ollama</code> 下启动（<code>-ngl 99 -fa on --no-mmproj-offload -t 10</code>，<code>-ngl 99</code> 静默忽略）</td>
+        <td>CPU<br>（未能上卡）</td>
+        <td class="num">39.02</td>
+        <td class="num bad">12.70</td>
+        <td>27.42 s（全量，无 GPU；原文未区分冷/热）<br>缓存命中：<span class="miss">未测</span></td>
+        <td class="num">1329→1332 / 峰值 1342</td>
+        <td class="hit">4/4 字段 + 结论（慢但算对）</td>
+        <td class="cond">[1][2][3][4]<br>[6]</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <ol>
+      <li><b>本次请求（每行同口径）：</b>1069 prompt tokens、230 输出 tokens、<code>-c 8192</code>；prompt tok/s 为 <code>cache_prompt=false</code> 全量重算读数。</li>
+      <li><b>显存口径：</b>整卡 <code>nvidia-smi</code> used，含桌面约 1331 MiB。「待机」＝模型加载完成后、发起请求前；「峰值」＝本次请求期间最大值。</li>
+      <li><b>首 token 三口径分开报、不混用：</b>「冷」＝本次 server 进程的第一次多模态调用；「热·全量」＝同进程后续调用且 <code>cache_prompt=false</code> 全量重算；「缓存命中」＝同进程、相同 prompt、KV 前缀复用（服务端只算 1 个 token）。原文未给 G2/G3/G5 的冷启动读数，故写「未测」。</li>
+      <li><b>精度判据：</b><code>make_test_image.py</code> 真值逐字比对——<code>gps_lat 128,430/0.42%/17</code>、<code>gps_lon 128,430/0.38%/9</code>、<code>road_name 128,430/6.71%/132</code>、<code>speed_limit 96,215/12.05%/48</code> 四项全中；结论句原样输出（含「6.71%」「P2」「7 日内回补」）。<b>六组回答逐字一致——FA、KV 量化、mmproj 位置乃至 CPU 退化都没有改变输出。</b></li>
+      <li><b>decode 为两次读数，本表取首跑：</b>G2 116.71（次跑 115.87）、G3 113.57（次跑 111.81）、G4 116.71（次跑 118.07）、G5 117.93（次跑 115.19）；G1 117.33、G6 12.70 为单次读数。</li>
+      <li><b>单位归一说明（不改数值）：</b>「缓存命中」秒数在原文中写作 <code>0.030 s</code>（G1）、<code>0.032</code>（G2）、<code>0.031</code>（G3）、<code>0.031</code>（G4）、<code>0.054</code>（G5），本表统一补单位 <code>s</code>，数值逐字未改。</li>
+      <li><b>G6 判据：</b>启动目录同级<b>没有</b> <code>ggml-cuda.dll / cublas64_13.dll</code>（只在子目录 <code>cuda_v13\</code> 下）；进程正常、<code>/health</code> 正常 ok、日志无 CUDA offload 行也无报错，GPU 占用全程恒 1329–1342 MiB。此场景下 mmproj 同样无法上卡。</li>
+    </ol>
+  </div>
+
+  <div class="concl">
+    <b>一句话结论：</b>同一张 12GB 显卡、同一张图，把 mmproj 放回 GPU：prompt <b>80.07 → 2322.94 tok/s</b>、热·全量首 token <b>13.37 s → 0.481 s</b>、冷启动 <b>12.97 s → 0.586 s</b>，代价是显存 6273 → 8268 MiB（峰值 8369），<b>全程无 OOM</b>。G6 提醒：进程正常不等于 GPU 在跑——显存只占 1.3 GB 就是模型在 CPU 上（decode <b>12.70 vs 117.33</b>，慢 9.2 倍）。
+  </div>
+
+  <div class="disc">
+    本文所有性能数字均为单机实测：RTX 5070 12GB（12227 MiB）／i5-14600K／32GB 内存／Windows 10，同一张测试图与同一 prompt；结论不迁移到其他硬件，你的读数以自己机器为准。
+  </div>
+  <div class="src">
+    可编辑内容源：<code>H1-对照表.md</code>　｜　本页 1 页（A4 横向，可直接打印）　｜　原始日志：<code>D:\ollama\bench-r14\server-G*.log</code>、<code>result-G*.json</code>　｜　本页无外链、无第三方素材。
+  </div>
+
+</div>
+</body>
+</html>
