@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12GB 显存本地部署对照表 + 本机自检脚本｜单机实测</title>
+<meta name="description" content="同一张 12GB 显卡、同一张图：首 token 13.37 秒 → 0.481 秒。下载《12GB 显存本地部署对照表》（1 页）与本机自检脚本包（3 个文件），无需关注、无需口令。">
+<!--
+  产物：站点骨架 index.html（R18-W4）
+  输入：D:\Dev\爱马仕\org\landing\落地页文案.md（§1 四区块 S1→S4、§2/§3/§4/§5 逐字文案）
+  约束：自包含（无外链、无 CDN、无脚本）；下载直链指向同站 downloads/；页面不出现「关注后…」字样、不含提取码/口令、不报价。
+  下载资产由 R18-W5（operator）拷入 site\downloads\。
+-->
+<style>
+  :root{
+    --ink:#16181d; --sub:#5a6371; --line:#e3e6eb; --bg:#ffffff;
+    --accent:#1f5fd0; --accent-ink:#0f3d8f; --card:#f7f9fc; --warn:#8a5300;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:17px; line-height:1.75;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px}
+  a{color:var(--accent)}
+  h1,h2,h3{line-height:1.35; margin:0 0 .5em}
+  h1{font-size:1.75rem; letter-spacing:.2px}
+  h2{font-size:1.3rem; margin-top:2.6rem; padding-bottom:.35rem; border-bottom:2px solid var(--line)}
+  h3{font-size:1.05rem; color:var(--sub); font-weight:600}
+  p{margin:.7em 0}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ---------- S1 首屏 ---------- */
+  #s1{padding:52px 0 8px}
+  #s1 .kicker{display:inline-block; font-size:.82rem; letter-spacing:.08em; color:var(--accent-ink);
+    background:#eaf1fd; border:1px solid #cfe0fb; border-radius:999px; padding:3px 12px; margin-bottom:14px}
+  #s1 .lead{font-size:1.28rem; font-weight:700; color:var(--ink)}
+  #s1 .machine{color:var(--sub); font-size:.95rem}
+  .cta{
+    display:inline-block; margin:22px 0 6px; padding:15px 26px; border-radius:10px;
+    background:var(--accent); color:#fff; font-size:1.06rem; font-weight:700; text-decoration:none;
+  }
+  .cta:hover{background:var(--accent-ink)}
+  .cta small{display:block; font-weight:400; font-size:.82rem; opacity:.92}
+  .nofollow{font-size:.9rem; color:var(--warn); margin-top:6px}
+
+  /* ---------- 下载区 ---------- */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:18px 0}
+  .dl{list-style:none; padding:0; margin:14px 0 0}
+  .dl li{padding:10px 0; border-top:1px dashed var(--line)}
+  .dl li:first-child{border-top:0}
+  .dl a{font-weight:700; text-decoration:none; border-bottom:2px solid #cfe0fb}
+  .dl a:hover{border-bottom-color:var(--accent)}
+  .meta{color:var(--sub); font-size:.88rem}
+  .facts{margin:14px 0 0; padding-left:1.2em}
+  .facts li{margin:.35em 0}
+  .needle{background:#fff6d8; border-left:4px solid #e0a800; padding:10px 14px; margin:14px 0; border-radius:0 8px 8px 0}
+
+  /* ---------- S4 咨询 ---------- */
+  #s4 .verbatim{margin:0}
+  .entry{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px}
+  @media (max-width:640px){.entry{grid-template-columns:1fr}}
+  .entry .box{border:1px solid var(--line); border-radius:10px; padding:16px; background:#fff}
+  .box h3{margin-top:0}
+  .placeholder{border:1px dashed #c8ccd4; background:#fbfbfd; color:var(--sub);
+    border-radius:8px; padding:12px 14px; font-size:.92rem; margin-top:10px}
+  .boundary{border-left:4px solid var(--accent); background:#f2f6fd; padding:12px 16px; border-radius:0 8px 8px 0; margin-top:18px}
+
+  footer{border-top:1px solid var(--line); margin-top:52px; padding:22px 0 40px; color:var(--sub); font-size:.86rem}
+  footer p{margin:.4em 0}
+
+  @media print{
+    :root{--card:#fff; --bg:#fff}
+    body{font-size:11.5pt; line-height:1.55}
+    #s1{padding-top:0}
+    .cta{color:#000; background:#fff; border:1.5pt solid #000; padding:8pt 12pt}
+    h2{break-after:avoid; page-break-after:avoid}
+    .card, .entry .box, .placeholder{break-inside:avoid; page-break-inside:avoid}
+    .nofollow{color:#000}
+    footer{page-break-before:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ S1 首屏一句话 ============ -->
+  <section id="s1" data-block="S1">
+    <span class="kicker">单机实测 · 6 组对照</span>
+    <h1 class="lead">同一张 12GB 显卡，同一张图：首 token <span class="num">13.37</span> 秒 → <span class="num">0.481</span> 秒，差别只在 mmproj 放哪</h1>
+    <p class="machine">这是我们自己机器上跑的 6 组对照——<strong>RTX 5070 12GB / i5-14600K / 32GB / Windows 10</strong>，<span class="num">1069</span> prompt tokens、<span class="num">230</span> 输出 tokens，prompt 速度用 <code>cache_prompt=false</code> 全量重算量出来的真读数（不是「端到端墙钟」折出来的假速度）。</p>
+    <p>下表与启动命令可直接下载：<strong>不用关注，不用领口令，点开就能存。</strong></p>
+    <a class="cta" href="downloads/H1-对照表.html" download>下载《12GB 显存本地部署对照表》（1 页）
+      <small>H1-对照表.html · A4 横向 · 可直接打印</small>
+    </a>
+    <p class="nofollow">下载按钮直接指向本站文件，不是关注页、不是二维码、无需任何口令。</p>
+  </section>
+
+  <!-- ============ S2 对照表下载区（H1） ============ -->
+  <section id="s2" data-block="S2">
+    <h2>对照表下载区（H1）</h2>
+    <div class="card">
+      <h3>《12GB 显存本地部署对照表》</h3>
+      <p>文件名：<code>H1-对照表.html</code>　页数：<strong>1 页</strong>（A4 横向，可直接打印）</p>
+      <p>表内六行：G1 基线、G2 FlashAttention 开关、G3 KV q8_0、G4 mmproj 上卡、G5 线程数 <code>-t 12</code>、G6 CPU 退化。<br>
+         每一行都带<strong>测得条件脚注</strong>（1069 prompt tokens、230 输出 tokens、显存为整卡 used 含桌面占用），表头正下方固定一行写明：</p>
+      <p class="meta">「单机实测 RTX 5070 12GB / i5-14600K / 32GB / Windows 10，结论不迁移到其他硬件。」</p>
+      <div class="needle">
+        <p><strong>表里有三个数最值得先看：</strong></p>
+        <ul class="facts">
+          <li>G4 的 prompt <strong class="num">2322.94 tok/s</strong>（G1 是 <span class="num">80.07</span>）</li>
+          <li>G4 的热·全量首 token <strong class="num">0.481 s</strong>（G1 是 <span class="num">13.37 s</span>）</li>
+          <li>G4 的整卡峰值显存 <strong class="num">8369 MiB</strong>（含桌面 <span class="num">1331 MiB</span>）</li>
+        </ul>
+        <p>省 <span class="num">1995 MiB</span> 显存换来 29 倍图像编码延迟的那笔交易，我们实测是纯亏。</p>
+      </div>
+      <ul class="dl">
+        <li>
+          <a href="downloads/H1-对照表.html" download>H1-对照表.html</a>
+          <div class="meta">页数：1 页（A4 横向）｜内容源：<code>H1-对照表.md</code>（同页内容，可编辑）</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ S3 自检脚本下载区（H2） ============ -->
+  <section id="s3" data-block="S3">
+    <h2>自检脚本下载区（H2）</h2>
+    <div class="card">
+      <h3>《本机部署自检脚本》</h3>
+      <p>文件清单：<code>自检.cmd</code>、<code>verify_vision.py</code>、<code>说明.md</code>（脚本包，<strong>3 个文件</strong>）</p>
+      <p>一段命令跑完三段判据：</p>
+      <ol class="facts">
+        <li><strong>启动目录检查</strong>——<code>llama-server.exe</code> 同级目录里有没有 <code>ggml-cuda.dll / cublas64_13.dll</code>（我们的实测坑：这两个 DLL 只在子目录 <code>cuda_v13\</code> 下，直接双击会静默退化成 CPU）；</li>
+        <li><strong>显存与占卡进程清单</strong>——<code>nvidia-smi</code> 当前 used 与占用进程，对照本机桌面常驻约 <span class="num">1331 MiB</span> 的基线；</li>
+        <li><strong>驻留显存是否落在预期区间</strong>——加载后整卡占用若只有 1.3 GB 级，打印「可能已退化 CPU」。</li>
+      </ol>
+      <p>这三段判据对应的实测事实：正确 CUDA 启动时整卡占用约 <span class="num">8.3 GB</span>、decode <span class="num">117.33 tok/s</span>；退化时 GPU 恒 <span class="num">1329–1342 MiB</span>、decode <span class="num">12.70 tok/s</span>（慢 <span class="num">9.2</span> 倍），而进程与 <code>/health</code> 都正常、日志里没有报错。<strong>「能跑」不等于「在 GPU 上跑」。</strong></p>
+      <p class="meta">脚本以 Windows + <code>llama-server</code>（本机为 <code>D:\ollama\bin\llama-server.exe</code>，端口 8081）为前提，其他环境请按注释改路径。</p>
+      <ul class="dl">
+        <li><a href="downloads/自检.cmd" download>自检.cmd</a><div class="meta">脚本包 3 文件之一 · 无页码（可执行）</div></li>
+        <li><a href="downloads/verify_vision.py" download>verify_vision.py</a><div class="meta">脚本包 3 文件之一 · 无页码（可执行）</div></li>
+        <li><a href="downloads/说明.md" download>说明.md</a><div class="meta">脚本包 3 文件之一 · 页数以该文件实际交付为准</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ S4 咨询入口（H3） ============ -->
+  <section id="s4" data-block="S4">
+    <h2>咨询入口（H3）</h2>
+    <div class="card">
+      <p class="verbatim"><strong>要按你的硬件出一份选型表？</strong><br>
+         留邮箱或加微信，说明你的显卡型号、显存与模型用途；我们按你机器的实际读数回一份对照建议。</p>
+      <p><strong>我们能接的三件事：</strong></p>
+      <ol class="facts">
+        <li><strong>数据质量巡检报告</strong>——字段级空值率/格式错误率 + 缺陷等级与回补时限（本机实测模板：4 组字段 + 阈值判定 + P2/回补时限）；</li>
+        <li><strong>私有化部署</strong>——在你自己机房里完成本地模型部署 + 自检脚本 + 验收清单，全程离线；</li>
+        <li><strong>地图变更检测</strong>——变更检测流程与预筛方案。</li>
+      </ol>
+
+      <div class="entry">
+        <div class="box">
+          <h3>邮箱咨询</h3>
+          <div class="placeholder">
+            联系邮箱待回填（老板提供入口）。<br>
+            入口未落位前，本区块<strong>不放任何伪造/示例邮箱</strong>，以免读者把测试地址当成真实联系入口。
+          </div>
+        </div>
+        <div class="box">
+          <h3>微信咨询</h3>
+          <div class="placeholder">
+            微信二维码待回填（老板提供入口）。<br>
+            入口未落位前，本区块<strong>不放占位二维码图片</strong>。
+          </div>
+        </div>
+      </div>
+
+      <div class="boundary">
+        <p><strong>边界（写在入口旁边，不删）</strong>：所有性能数字都是上面那台机器（RTX 5070 12GB / i5-14600K / 32GB / Windows 10）的实测结果，我们不为没实测过的硬件做性能承诺；页面上未标读数的项目一律写「未测」。</p>
+        <p class="meta">本页不报价。报价与三档服务细节在一对一沟通里给。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>本页为静态骨架页；下载文件位于本站 <code>downloads/</code> 目录，点击即存，<strong>无需关注、无需口令</strong>。</p>
+    <p>本站「地图变更检测 / 路网一致性体检报告」产品线使用 &copy; OpenStreetMap contributors 数据（ODbL 许可）；本页不展示任何地图数据。</p>
+    <p>本页所有读数均为单机实测，条件见上方各处脚注；未实测项一律标注「未测」。</p>
+  </footer>
+
+</div>
+</body>
+</html>
