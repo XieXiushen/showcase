@@ -1,0 +1,108 @@
+============================================================
+ 本地视觉服务自检（三段判据）
+ 目标程序: D:\ollama\bin\llama-server.exe
+ 时间: 周六 2026/09/26 17:52:14.11
+============================================================
+
+[判据一] 启动目录与 CUDA DLL 位置
+------------------------------------------------------------
+  启动目录  : D:\ollama\bin\
+  同级 DLL  :
+concrt140.dll
+cublas64_13.dll
+cublasLt64_13.dll
+ggml-base.dll
+ggml-cpu-alderlake.dll
+ggml-cpu-cannonlake.dll
+ggml-cpu-cascadelake.dll
+ggml-cpu-cooperlake.dll
+ggml-cpu-haswell.dll
+ggml-cpu-icelake.dll
+ggml-cpu-ivybridge.dll
+ggml-cpu-piledriver.dll
+ggml-cpu-sandybridge.dll
+ggml-cpu-sapphirerapids.dll
+ggml-cpu-skylakex.dll
+ggml-cpu-sse42.dll
+ggml-cpu-x64.dll
+ggml-cpu-zen4.dll
+ggml-cuda.dll
+ggml.dll
+libc++.dll
+libllama-common.dll
+libllama-quantize-impl.dll
+libllama-server-impl.dll
+libllama.dll
+libmtmd.dll
+libomp.dll
+libunwind.dll
+libwinpthread-1.dll
+msvcp140.dll
+msvcp140_1.dll
+msvcp140_2.dll
+msvcp140_atomic_wait.dll
+msvcp140_codecvt_ids.dll
+vccorlib140.dll
+vcruntime140.dll
+vcruntime140_1.dll
+vcruntime140_threads.dll
+
+  cuda_v13 子目录 DLL :
+    (无 cuda_v13 子目录)
+
+  判定: [OK] CUDA 运行库与 exe 同级，-ngl 99 有机会生效。
+
+[判据二] nvidia-smi 显存占用与占显存进程清单
+------------------------------------------------------------
+name, driver_version, memory.used [MiB], memory.total [MiB]
+NVIDIA GeForce RTX 5070, 581.29, 8548 MiB, 12227 MiB
+
+Sat Sep 26 17:52:14 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 581.29                 Driver Version: 581.29         CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5070      WDDM  |   00000000:01:00.0  On |                  N/A |
+|  0%   41C    P8              9W /  250W |    8548MiB /  12227MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            1972    C+G   C:\Windows\System32\dwm.exe           N/A      |
+|    0   N/A  N/A            4352    C+G   ...lease\win-unpacked\Hermes.exe      N/A      |
+|    0   N/A  N/A            4552    C+G   ...Chrome\Application\chrome.exe      N/A      |
+|    0   N/A  N/A            5140    C+G   ...h_cw5n1h2txyewy\SearchApp.exe      N/A      |
+|    0   N/A  N/A            6172    C+G   ...GABYTE\Control Center\GCC.exe      N/A      |
+|    0   N/A  N/A            6444    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A            8700    C+G   ...a4d2cbcxa\app\TencentDocs.exe      N/A      |
+|    0   N/A  N/A           10428    C+G   ...xyewy\ShellExperienceHost.exe      N/A      |
+|    0   N/A  N/A           13304    C+G   ...5n1h2txyewy\TextInputHost.exe      N/A      |
+|    0   N/A  N/A           15300    C+G   ...)\ByteDance\douyin\douyin.exe      N/A      |
+|    0   N/A  N/A           17068    C+G   ...ffice6\promecefpluginhost.exe      N/A      |
+|    0   N/A  N/A           17812    C+G   ...Chrome\Application\chrome.exe      N/A      |
+|    0   N/A  N/A           17904    C+G   ..._1mmjbktjj1mkp\GBT_DL_LIB.exe      N/A      |
+|    0   N/A  N/A           18856    C+G   ...h_cw5n1h2txyewy\SearchApp.exe      N/A      |
+|    0   N/A  N/A           19356    C+G   ...a\Local\Feishu\app\Feishu.exe      N/A      |
+|    0   N/A  N/A           20060    C+G   ...Cloud Computer\bin\wuying.exe      N/A      |
+|    0   N/A  N/A           21988    C+G   ...omputer\bin\stream_viewer.exe      N/A      |
+|    0   N/A  N/A           28676    C+G   ...in\git-credential-manager.exe      N/A      |
+|    0   N/A  N/A           31384    C+G   ...in\git-credential-manager.exe      N/A      |
+|    0   N/A  N/A           32208      C   D:\ollama\bin\llama-server.exe        N/A      |
++-----------------------------------------------------------------------------------------+
+
+[判据三] 模型加载后驻留显存（每约 1 秒采样一次，共 12 次取峰值）
+------------------------------------------------------------
+  最后一次采样: 8551 MiB
+  采样峰值    : 8556 MiB
+  判定: [OK] 权重已上卡(本机 G4 组记录: 加载 8268 / 峰值 8369 MiB, 见 result-G4.json)
+
+============================================================
+ 三段判据跑完。任一段 FAIL 都不要发稿/交付，先修再测。
+============================================================
